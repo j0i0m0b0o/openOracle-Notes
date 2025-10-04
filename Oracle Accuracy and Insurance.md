@@ -1,4 +1,4 @@
-In openOracle, we say oracle accuracy is within +/- F where F ~= swap fees + jump loss + gas cost.
+In openOracle, we say oracle accuracy is within +/- F where F ~= swap fees + jump loss + gas cost. The gas cost component may be more complicated than just strictly gas cost as we will get into here.
 
 For example, say there's $100 of USDC and $100 of WETH in an oracle report instance with 1% swap fee and gas is $1 to both dispute and submit an initial report. The price of ETH is implied by the ratio of token amounts in the report.
 
