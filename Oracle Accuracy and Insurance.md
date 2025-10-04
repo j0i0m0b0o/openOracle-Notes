@@ -48,6 +48,7 @@ Net flows sent in by report: $200 of tokens, $100 of USDC and $100 of WETH
 Net flows sent back by dispute ($0 gas fee):
 
 Case price goes up +1%: +$201 of tokens, $100 of USDC from initial report + $100 USDC from disputer + $1 swap fees from dispute
+
 Case price goes down ~ -0.99%: exactly +$199 of tokens, ~$99.00990099 of weth from initial report + ~$99.00990099 of weth from disputer + ~ $0.9900990099 swap fees from dispute
 
 If we assume price up +1% and price down (1 - 1/1.01) are each 50% likely, a new reporter loses exactly 0 in expectation from this game. So we can see things are much cleaner with low or neglibile gas.
