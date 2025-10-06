@@ -25,6 +25,8 @@ Next, under FOCIL, we are assuming the inclusion committee members get routed fe
 
   number of blocks with grief ratio G is (G + 1) / (I * M)
 
+There is a caveat here, which is we should replace “number of blocks” with “the count of blocks in the settlement window controlled by entities outside the censoring cartel.” If one party (the attacker/cartel) controls 9 of 10 blocks, only the remaining producer must be bribed. With FOCIL, we can multiply this by the number of independent inclusion committee members per block who are not in the cartel. So there is some uncertainty and the settlement window should be widened further.
+
 We have to look at binary notionals now. Assume no FOCIL. For example, let's say someone bets a large amount that the price is below some number N. They report a number just below N and then censor all disputes. The true price is at P. We can say, the internal oracle price error here is (P-N)/P, call that a delta "D". This delta must be paid for by the briber. So for a binary outcome:
 
   number of blocks with grief ratio G is (G + 1) / (D * I)
@@ -41,8 +43,10 @@ Imagine a situation where there's 10x as many blocks that are actually needed fo
 
 Standing liquidity that is "censorship-attack aware" immediately blows up because of this. It may take an oracle user with it which is unfortunate. But still the concept of "the standing liquidity / parasitic OI is dead well before YOU do a price request" is statistically true.
 
-So you could say, i want to assign a grief ratio to the censorship briber G and then also a grief ratio to the parasitic OI latchers of P or something:
+So you could say, I want to assign a grief ratio to the censorship briber G and then also a grief ratio to the parasitic OI latchers of P:
 
   (G+1) / I becomes (max(G,P) + 1) / I
+
+We would then increase this further based on the apparent levels of cartelization among the block producers.
 
 It is left as an exercise to the reader to calculate the required number of blocks for a given grief ratio to prevent something like a Chainlink or Pyth price from getting on-chain in comparison to openOracle.
