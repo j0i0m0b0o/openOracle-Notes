@@ -18,6 +18,6 @@ But it is a helpful framing to understand the costs and move toward a more refin
 	
 	3.	Alternative escalation that lets anyone escalate up to this amount to take advantage of a delay attacker’s willingness to pay swap fees.
 	
-	4.	This allows for very high multipliers without importing an ugly tail into current oracle accuracy.
+	4.	This allows for higher multipliers without importing an ugly tail into current oracle accuracy. The cost of capital is the main cost transferred from future disputes to the current oracle accuracy in the worst case self dispute game.
 
 We don't expect disputers to need to use the self-dispute-only structure, but this framework will encourage participation since it is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
