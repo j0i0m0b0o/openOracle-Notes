@@ -1,0 +1,41 @@
+Late 2024 writeup on oracle economics: 
+
+Economics of participating
+Why submit an initial report?
+An honest reporter can earn a fee, in ETH, by committing amounts of two tokens which attests to their price; however, if the price moves enough after attestation, the reporter will lose money to an honest disputer swapping profitably against them. Since the honest reporter receives a small percentage fee from the swap, the price needs to move outside this fee boundary in order for them to lose money.
+
+So, the question to answer is, given these sources of profit and loss, what is the expected value of participating? Let A be the outcome where the price doesn't move outside the honest reporter's fee boundary. Let B be the outcome where the price does move and a disputer swaps against the honest reporter's tokens.
+
+In order to find probabilities of A and B given a fee boundary of F, denoted P(A) and P(B) respectively, we need to do some statistics. Assume the 5-second standard deviation of returns is F, and the fee boundary is +/- F. A dispute will happen if the price crosses the fee boundary at any point during the 5 seconds. Assuming normality, which is a bad assumption but will be dealt with later, we can get a double no-touch probability, which will be P(A). This comes out to ~0.37. P(A) is 1 - P(B) or 0.63.
+
+We get the eth fee in either case. EV(A) = 0 since nothing happens.
+
+For expected value of B, we can say we expect someone to arbitrage the swap once the price is epsilon (Ɛ) beyond the fee boundary. So the EV(B) = -1*0.63*Ɛ.
+
+To be profitable eth fee must be greater than EV(B) in absolute terms. So, if eth_fee > 0.63*Ɛ, the eth fee relative to the bonded tokens must be greater than roughly 1.58*Ɛ. So if for example the network of disputers tends to wait 1 basis point past the fee boundary to get a first dispute, having an eth fee of 2 basis points of the initial bonded tokens would make initial report participation profitable.
+
+Please note that these calculations assume normality and zero gas fees which can significantly impact the economics.
+
+Why submit a dispute?
+In the case of an honest report that should be disputed because the price moved a lot within 5 seconds of attestation, a disputer can earn the returns from swapping their tokens with those of the initial reporter at a good price. Any disputer is ineligible for the eth fee paid to the initial reporter. After swapping, the disputer has to commit the amount previously in token1 and token2 times a multiplier and imply a new price. Anyone can dispute this new dispute for 5 seconds.
+
+We have two possible events, A and B. Let A be the outcome where the price doesn't move outside the disputer's fee boundary. Let B be the outcome where the price does move enough and a new disputer swaps against the last disputer's tokens.
+
+P(A) and P(B) follows the same math as in the prior discussion. P(A) = 0.37 and P(B) = 0.63.
+
+The disputer already earns Ɛ from swapping against the previous reporter, but there is a 63% chance they get swapped against and lose Ɛ of their own bond, which is larger than the previous reporter's by a multiplier M. So we can say EV(B) = -1*0.63*M*Ɛ.
+
+In outcome A, nothing happens. So EV(A) = 0.
+
+In either A or B the disputer has already earned Ɛ. So the EV of disputing is Ɛ - 0.63*M*Ɛ. So for multipliers less than ~1.58, disputing is profitable, assuming normality and consistent Ɛ across two sequential time periods. 
+
+Handling incorrect normality assumption
+It is not correct to assume normality when dealing with the vast majority of financial returns. If tails are fatter than normal, both losses in and probability of outcome B may be larger. Tails are typically fatter than what is implied by normality especially on 5 second timeframes. Also, other distributions may have very different relationships between their variance and double no touch probabilities as that of the normal distribution. Also, variance can be meaningless for other distributions and so they use their own dispersion measure. Whatever returns we realize from a reasonably imaginable distribution, we need to ensure profitability for the initial reporter and subsequent disputers.
+
+For initial reports, we can deal with this problem by increasing the eth fee relative to Ɛ. With normality, we need the eth fee to be about two times Ɛ. We can do four or even eight times Ɛ to be safe. Since the oracle is designed to work with small amounts in the initial report, increasing the eth fee isn't a large cost born by users of the oracle and can remain a small absolute expense.
+
+For disputes, we also need to handle fat tails. If tails are fat, then instead of P(A) = 0.37 and P(B) = 0.63, it might be more like P(A) = 0.2 and P(B) = 0.8. If this is the case, following the dispute logic earlier in the discussion means the EV of disputing is Ɛ - 0.8*M*Ɛ, which implies a maximum multiplier of 1.25 to ensure profitability for disputers. The closer P(B) gets to 1, the closer the multiplier has to be to 1 to ensure profitability. Ɛ might be nontrivial and the distribution might be even more prone to pass either barrier, so we can reduce M to 1.1 to be safer.
+
+It seems reasonable to use a dispute multiplier of 1.1. It is hard to know when P(B) is so much greater than P(A) or Ɛ is so great that participation isn't profitable at a 1.1 multiplier. The amount you can extract with a bad oracle report when P(B) is significantly greater than P(A) is limited. The farther the reported price is off, even during P(B)>>P(A), the more incentive someone has to dispute it. Users can also choose their own multiplier.
+
+Another cost to disputers and reporters not reflected in normality is price jump risk. Prices are not continuous and will instantaneously gap up or down. This is a cost because reporters are effectively offering both a buy and sell limit order at the same price. So no matter which way the price jumps the reporter loses. This cost directly influences Ɛ.
