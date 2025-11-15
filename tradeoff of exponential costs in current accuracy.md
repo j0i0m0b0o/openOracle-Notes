@@ -1,6 +1,6 @@
 The following analysis is part of an attempt to WW3-and-crazy-distribution proof the openOracle design for binary events. These challenges are not nearly as present for linear notionals.
 
-Based on the underlying market price action and reasonable assumptions about dispute network participation, exponential escalation can shift future costs back into the current oracle accuracy.
+Based on the underlying market price action and stylized assumptions about dispute network participation, exponential escalation can shift future costs back into the current oracle accuracy.
 
 More specifically, if we assume a disputer is looking at some report, and then there is a worst-case self-dispute every round after that with some proportional cost (like a % burn fee or jump loss), and we have a multiplier M and a per-round settlement (no-dispute) probability Q, then we require
 
