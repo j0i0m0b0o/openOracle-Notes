@@ -11,9 +11,13 @@ The derivation can be found more or less [here](https://github.com/j0i0m0b0o/ope
 This is an unrealistic scenario because it assumes there are no other disputers but somehow self-disputes are still needed. It also ignores the “dispute and refuse to self-dispute” path, which makes oracle accuracy widen from ±F to roughly ±(F + M × expected move over the settlement time), assuming at least one other disputer pursuing the same strategy. Here F can be thought of as the worst-case no-dispute band from fees; in this simplified model we can roughly take F ≈ swap fees + 2 × protocol fees.
 
 But it is a helpful framing to understand the costs and move toward a more refined oracle game design for time-critical report IDs like liquidations:
+	
 	1.	Swap-fee-only up to escalation halt, at which point burn kicks in (M = 1 here makes this distributionally nice since required Q > 0 structurally).
+	
 	2.	Self-disputes prior to escalation halt don’t pay any proportional fee since self-disputers can get a dispute in before it is profitable for the rest of the network.
+	
 	3.	Alternative escalation that lets anyone escalate up to this amount to take advantage of a delay attacker’s willingness to pay swap fees.
+	
 	4.	This allows for very high multipliers without importing an ugly tail into current oracle accuracy.
 
 We don't expect disputers to need to use the self-dispute-only structure, but this framework will encourage participation since it is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
