@@ -28,8 +28,6 @@ An alternative to 1) above is disputeDelay-only up to escalation halt then burn 
 
 This may be an exercise in futility since any design we choose has an endogenous Q stabilizing mechanism from the no-dispute band widening and there is always a strictly positive cost from capital lock-up alone forcing us into this Q > 1 - 1 / M regime for self-dispute-only.
 
-We don't expect disputers to need to use the self-dispute-only structure, but the swap-fee-only up to escalation halt framework may encourage participation since self-dispute is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
-
 For the self-dispute-only stragey, it seems like we are fundamentally constrained by the Q > 1 - 1 / M inequality. For example, let's say we were using a 1.6x multiplier. 
 
 	Q > 1 - 1 / 1.6 => Q > ~0.37
