@@ -4,7 +4,7 @@ More specifically, if we assume a disputer is looking at some report, and then t
 
 > **Q > 1 − 1/M**
 
-for the expected total future cost of that “always self-dispute” strategy to stay finite. If actual Q makes this inequality false, the expected future cost can become arbitrarily large, so a rational trader may refuse to dispute unless the mispricing is very big — effectively widening the no-dispute band.
+for the expected total future cost of that “always self-dispute” strategy to stay finite. If actual Q makes this inequality false, the expected future cost can become arbitrarily large, so a rational trader may refuse to dispute unless the mispricing is very big — effectively widening the no-dispute band and worsening oracle accuracy.
 
 The derivation can be found more or less [here](https://github.com/j0i0m0b0o/openOracle-Notes/blob/main/old%20docs%20post%20on%20multiplier%20threshold).
 
