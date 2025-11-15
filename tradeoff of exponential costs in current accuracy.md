@@ -8,7 +8,7 @@ More specifically, if we assume a disputer is looking at some report, and then t
 
 for the expected total future cost of that “always self-dispute” strategy to stay finite. If actual Q makes this inequality false, the expected future cost can become arbitrarily large, so a rational trader may refuse to dispute unless the mispricing is very big — effectively widening the no-dispute band and worsening oracle accuracy.
 
-The derivation can be found more or less [here](https://github.com/j0i0m0b0o/openOracle-Notes/blob/main/old%20docs%20post%20on%20multiplier%20threshold).
+A related derivation can be found more or less [here](https://github.com/j0i0m0b0o/openOracle-Notes/blob/main/old%20docs%20post%20on%20multiplier%20threshold).
 
 This is an unrealistic scenario because it assumes there are no other disputers but somehow self-disputes are still needed. It also ignores the “dispute and refuse to self-dispute” path, which makes oracle accuracy widen from ±F to roughly ±(F + M × expected move over the settlement time), assuming at least one other disputer pursuing the same strategy. Here F can be thought of as the worst-case no-dispute band from fees; in this simplified model we can roughly take F ≈ swap fees + 2 × protocol fees.
 
