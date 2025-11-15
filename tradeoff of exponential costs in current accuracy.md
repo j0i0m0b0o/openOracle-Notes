@@ -26,6 +26,8 @@ But it is a helpful framing to understand the costs and move toward a more refin
 
 An alternative to 1) above is disputeDelay-only up to escalation halt then burn fees activate. This imports the market's expected move into oracle accuracy and the swap fee is not its own oracle problem. If the no-dispute band were ever larger than the expected move, self-disputes are often free, so the band naturally tightens. It also recalibrates every round - and the survival probability inside +/- ~1 expected move is relatively robust. This mechanically stabilizes Q by itself which cuts off the nasty expected exponential cost of low-Q environments. It should be noted, however, that we do get a burn-like tradeoff in the pre-escalation halt path despite controlling Q more directly. Probably smaller multipliers are more appropriate for this path.
 
-We don't expect disputers to need to use the self-dispute-only structure, but this framework will encourage participation since it is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
+This may be an exercise in futility since any design we choose has an endogenous Q stabilizing mechanism from the no-dispute band widening.
+
+We don't expect disputers to need to use the self-dispute-only structure, but the swap-fee-only up to escalation halt framework may encourage participation since self-dispute is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
 
 In general, having many disputers reduces costs for everybody and is an extremely powerful network effect.
