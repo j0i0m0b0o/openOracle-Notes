@@ -22,6 +22,8 @@ But it is a helpful framing to understand the costs and move toward a more refin
 	
 	4.	This allows for higher multipliers without importing an ugly tail into current oracle accuracy. The cost of capital is the main cost transferred from future disputes to the current oracle accuracy in the worst-case self-dispute game.
 
+An alternative to 1) above is disputeDelay-only up to escalation halt. This imports the market's expected move into oracle accuracy. If the band were ever larger than the expected move, self-disputes are free, so the band naturally tightens. It also recalibrates every round - and the survival probability inside +/- 1 expected move is relatively robust. This mechanically stabilizes Q by itself which cuts off the nasty expected exponential cost of low-Q environments.
+
 We don't expect disputers to need to use the self-dispute-only structure, but this framework will encourage participation since it is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
 
 In general, having many disputers reduces costs for everybody and is an extremely powerful network effect.
