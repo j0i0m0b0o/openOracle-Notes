@@ -30,4 +30,12 @@ This may be an exercise in futility since any design we choose has an endogenous
 
 We don't expect disputers to need to use the self-dispute-only structure, but the swap-fee-only up to escalation halt framework may encourage participation since self-dispute is always a viable fallback strategy that will preserve oracle accuracy in wild market conditions.
 
-In general, having many disputers reduces costs for everybody and is an extremely powerful network effect.
+For the self-dispute-only stragey, it seems like we are fundamentally constrained by the Q > 1 - 1 / M inequality. For example, let's say we were using a 1.6x multiplier. 
+
+	Q > 1 - 1 / 1.6 => Q > ~0.37
+
+The no-dispute band giving this expected settlement probability is at minimum +/- ~1 standard deviation of returns over the settlement time. For linear applications like offering swaps we already set the swap fee in proportion to the background market volatility so this is in-range of standard oracle behavior.
+
+If we wanted to use a multiplier of 10, Q > 0.9, this is +/- ~2 standard deviations of returns as a minimum no-dispute band. Even if the distribution is far from normal, we get a strong impact on Q from increasing the no-dispute band by a fraction of prevailing volatility / expected move etc. So the actual realized no-dispute band does not need to be very much higher than +/- ~2 for the accuracy impact on current report to be small.
+
+Having disputers engage in the "dispute and don't self dispute" strategy seems to help narrow the band in certain constructions, given the multiplier * expected move profit demand. But, if multiplier is 10, this strategy can result in a wider no-dispute band (~10 st dev) than self-dispute-only (~2 st dev), using the current example. The network will take the most willing disputer from any set of strategies which gives us the lowest possible no-dispute band of all of them.
