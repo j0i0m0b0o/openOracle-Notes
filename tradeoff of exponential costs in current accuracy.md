@@ -1,4 +1,4 @@
-The following analysis is part of an attempt to WW3-and-crazy-distribution proof the openOracle design for binary events. These challenges are not present for linear notionals.
+The following analysis is part of an attempt to WW3-and-crazy-distribution proof the openOracle design for binary events. These challenges are not nearly as present for linear notionals.
 
 Based on the underlying market price action and reasonable assumptions about dispute network participation, exponential escalation can shift future costs back into the current oracle accuracy.
 
