@@ -1,0 +1,15 @@
+peer to peer lending using openOracle for liquidations. fully trust minimized.
+
+1. You send in collateral, a requested borrow amount, oracle params for liquidation, liquidation threshold, a parameter for a failed liquidation payment, interest rate (and gradual increase controller to find the best market rate), and max term lock
+
+2. LP activates the borrow, sending the requested amount to the borrower and now has control over the collateral if a liquidation is triggered. Borrow getting activated does not require an oracle
+
+3. Anyone can liquidate a position by wagering the specified amount that the liquidation actually will trigger. You can only pay debt back if a liquidation is not active, meaning debt should be repaid at a price somewhere above your LT. Debt repayment requires no oracle. If a liquidation is attempted that fails (settled oracle price does not liquidate the position), you as the borrower get paid the amount you specified at time of borrow. This can be a very high APY for frivolous liquidation attempts. If a liquidation is successful, the lender gets all the collateral.
+
+4. openOracle controls the liquidation. lenders can sell their position to someone else for ~ the loan amount value. Borrowers can, near the end of term, swap their lender out for a new term without needing to repay and start a new loan. Swapping the lender out updates the interest rate to the market rate.
+
+Given worst-case oracle accuracy of ~ multiplier * expected move and inability to top up collateral or pay back debt when a liquidation price request is in progress, borrowers should keep themselves topped off when volatility spikes near liquidation threshold, as with any lending application.
+
+Since the borrower can delay the liquidation, the lender should start the game when the price is comfortably inside the liquidation threshold. It is possible to let anyone start the liquidation and wager an amount that is given to the borrower if the liquidation fails, but the liquidator earns some fraction of the lender's net profit (if > 0) at time of liquidation.
+
+Borrowing more from an existing lending arrangement is a bit complicated since you dont want the lender to have uncertain time horizons, but you can't really avoid it. so we will have the existing lender get paid some fixed penalty if the borrower wants to auction off the position to someone else in order to borrow more. alternatively, the existing lender can also have a programmatically lower interest rate slightly compared to everyone else at a given time point. one problem with the former approach is the borrower has a call option on rates the lender needs to price in. it seems like the best approach is starting the loan rate at 0, having it increase each block up to a cap, and the original lender only has to pay 90% of that value to continue lending, so they get to outbid the rest of the market if they would like.
