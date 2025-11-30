@@ -50,12 +50,6 @@ Next, we do:
 
 	if tokenToSwap is token2: (swapFees + burnFees) * P0
 	if tokenToSwap is token1: (swapFees + burnFees) 
---------------
 
-Turns out these have the same closed-form
-
-  R = (b + f) / (1 - b)
-
-Where f = swap fee, b = immediate profit as % chosen numeraire
 
 
