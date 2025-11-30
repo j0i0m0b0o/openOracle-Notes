@@ -51,5 +51,7 @@ Next, we do:
 	if tokenToSwap is token2: (swapFees + burnFees) * P0
 	if tokenToSwap is token1: (swapFees + burnFees) 
 
+-------
 
+this is all probably wrong. it seems like if we keep a consistent numeraire treatment the breakeven barriers are ~ (b+f)/(1+f) where b is immediate profit / dispute notional and f is swap fee
 
