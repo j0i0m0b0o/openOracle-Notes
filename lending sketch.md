@@ -5,12 +5,19 @@ actual implementation of a p2p lending protocol with liquidations here. not exac
 https://github.com/j0i0m0b0o/openOracleBase/blob/toxicWasteManagement/src/openLending_FIRST_DRAFT.sol
 
 -effectively zero interest rate options embedded on either side
+
 -any oracle game delay pays participants a very high interest rate if frivolous through protocol fee mechanics
+
 -no prepayment risk for lender, they are owed principal + end-of-period interest
+
 -borrower can repay debt (does not reduce interest owed) or top up collateral
+
 -borrower can refinance debt to extend term
+
 -liquidator is initial reporter, which solves the "how much to pay initial reporter" problem
+
 -lender can liquidate themselves or allow any liquidator and split remaining equity 50/50 with liquidator
+
 -each lending instance is its own separate game which eliminates many kinds of risks associated with pooled lending
 
 --------------------------------------------------------------------------------------
