@@ -19,3 +19,5 @@ There are open questions, including but not limited to:
 - How do censorship / block producer games factor in?
 - Is it possible to introduce an openOracle-style forced succession mechanic into the game? For example, let's say the game starts with a 1 ETH reward, and reporters must stake 100 ETH. If a PoW solution is found that wins 100 ETH, 10 of that ETH seeds the reward for another game immediately, and reporters there must stake 1000 ETH, and so on. This way, faking purchasing power increases becomes exponentially expensive. Escalation multipliers are just for illustration.
 - Does griefing completely kill honest tight reporting incentives / result in an equilibrium honest threshold that is manipulable? Is there a better way to do the forced succession in this context?
+
+Overall, the purpose of this mechanism is not a perfect CPI oracle. We just want at least some tendril of reality, however messy, around which we can engineer.
