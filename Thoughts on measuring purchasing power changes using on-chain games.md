@@ -21,3 +21,9 @@ There are open questions, including but not limited to:
 - Does griefing completely kill honest tight reporting incentives / result in an equilibrium honest threshold that is manipulable? Is there a better way to do the forced succession in this context?
 
 Overall, the purpose of this mechanism is not a perfect CPI oracle. We just want at least some tendril of reality, however messy, around which we can engineer.
+
+-------------------
+
+An orthogonal approach to this problem is to tokenize the proof of work and use it in a price ratio game. If you do this naively, the token has a ceiling price (miners can create more and sell if it's trading too high) but no floor, which makes using it to divine purchasing-power-adjacent things difficult. But, you could make the tokenized form redeemable for consensus weight, which gives it a price floor. This way, you could use it in an escalating two-way limit order game similar to openOracle. In PoW, proof of work is already redeemable for consensus weight, so it's just adding more to the standard process.
+
+There may be very strange reflexive issues. It might not work. But it is at least possibly coherent.
