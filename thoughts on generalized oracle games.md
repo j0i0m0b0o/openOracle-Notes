@@ -2,7 +2,17 @@ There are various ways people have tried to solve the generalized oracle problem
 
 Very roughly, the game is as follows. There are reporters submitting sealed reports and they are rewarded P if they voted with the majority at reveal. The idea is the truth is a schelling point for reporters. Aside from the P + epsilon attack, there is an issue of deciding who is in the participation set.
 
-One way we can think about attacking the participant set problem is as follows. You have a reporter reward. Anyone can report a sealed value by committing a fixed amount of liquidity. If after reveal everyone agrees, they split the reward. If anyone disagrees, all the reporters lose their money and some portion funds a larger next round. Continuation value can become nasty here so need to be mindful in an implementation.
+From Vitalik's piece linked above, the fundamental mechanism is as follows:
+
+"Suppose you and another prisoner are kept in separate rooms, and the guards give you two identical pieces of paper with a few numbers on them. If both of you choose the same number, then you will be released; otherwise, because human rights are not particularly relevant in the land of game theory, you will be thrown in solitary confinement for the rest of your lives. The numbers are as follows:
+
+14237 59049 76241 81259 90215 100000 132156 157604
+
+Which number do you pick?"
+
+100000 is the obvious answer. We can try to create this game on the blockchain without voting. A naive approach: A reporter seals an answer, anyone can match them with a sealed answer of their own, if they agree after reveal, the answer stands, they split some reward, and all is good. If they disagree, they are both slashed. There is a trivial exploit with the reporter and matcher being the same entity and reporting nonsense. So we need open participation.
+
+Instead of the naive prisoner game, imagine the following: You have a reporter reward. Anyone can report a sealed value by committing a fixed amount of liquidity. If after reveal everyone agrees, they split the reward. If anyone disagrees, all the reporters lose their money and some portion funds a larger next round. Continuation value can become nasty here so need to be mindful in an implementation.
 
 In terms of P + Epsilon, where P is the reward and Q is the loss, the bribe is actually P + Q + E. We assume ground truth is 0.
 
@@ -20,14 +30,14 @@ P+Q+E bribery:
 - (0, any 1) = -Q
 - (0, all 0) = +P
 
-So we still have a P + epsilon vulnerability. But at least we don't have the same kind of Sybil / participation set problem. It's a permissionless game.
+From this simplified perspective, we still have a P + epsilon vulnerability. But we don't have the same kind of Sybil / participation set problem. It's a permissionless game.
 
-Maybe it isn't possible to have receipt-freeness onchain. There are also challenges with preventing selective non-reveal from becoming a strategic weapon. Maybe there is some cryptographic technique allowing full participant set reveal after some period of time, like with VDFs.
+One attack vector is spamming reports to discourage participation, since the reward is fixed and split across reporters. One approach is taking advantage of continuation value. If you make the next round's rewards larger when there are more reports, it can become worth it to report two opposing answers, or just the wrong answer, and move the game to the next round. So we are trying to turn the report spam against the attacker. 
 
-One major problem that needs to be solved is spamming reports to discourage participation, since the reward is fixed and split across reporters. One approach is taking advantage of continuation value. If you make the next round's rewards larger when there are more reports, it can become worth it to report two opposing answers, or just the wrong answer, and move the game to the next round. So we are trying to turn the report spam against the attacker. 
+It is also possible the continuation value dynamic interferes with the P + Q + E attack economics in the above simplified perspective, which would be a good thing (may make bribery more difficult). The briber still has to pay the 1 reporter if anyone reported 0, which they may do to capture continuation value. Also, bribery may increase reporter participation, which directly increases continuation value, since the next round is funded from the reporters' stakes.
 
-It is also possible the continuation value dynamic interferes with the P + Q + E attack economics, which would be a good thing (may make bribery more difficult). The briber still has to pay the 1 reporter if anyone reported 0, which they may do to capture continuation value. Also, bribery may increase reporter participation, which directly increases continuation value, since the next round is funded from the reporters' stakes.
+It seems like continuation value is higher under manipulation than with honest reporting, which may allow us to avoid degenerate escalation when we don't want it. That would be a nice result.
 
-It seems like continuation value is higher under manipulation than with honest reporting, which may allow us to avoid degenerate escalation when we don't want it.
+It may not be possible to have receipt-freeness onchain. There are also challenges with preventing selective non-reveal from becoming a strategic weapon. Maybe there is some cryptographic technique allowing full participant set reveal after some period of time, like with VDFs.
 
 Overall, the game is extremely strange and might not work. Maybe we can't make it resistant to bribery. Maybe the continuation dynamic is too knife-edge between good reporting and exponential clown world blowups. Also it's certainly possible the schelling point has nothing to do with ground truth.
