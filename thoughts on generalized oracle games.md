@@ -27,4 +27,6 @@ Maybe it isn't possible to have receipt-freeness onchain. There are also challen
 
 One major problem that needs to be solved is spamming reports to discourage participation, since the reward is fixed and split across reporters. One approach is taking advantage of continuation value. If you make the next round's rewards larger when there are more reports, it can become worth it to report two opposing answers, or just the wrong answer, and move the game to the next round. So we are trying to turn the report spam against the attacker. It is also possible the continuation value dynamic interferes with the P + Q + E attack economics, which would be a good thing (may make bribery more difficult). The briber still has to pay the 1 reporter if anyone reported 0, which they may do to capture continuation value.
 
+It seems like continuation value is higher under manipulation than with honest reporting, which may allow us to avoid degenerate escalation when we don't want it.
+
 Overall, the game is extremely strange and might not work. Maybe we can't make it resistant to bribery. Maybe the continuation dynamic is too knife-edge between good reporting and exponential clown world blowups. Also it's certainly possible the schelling point has nothing to do with ground truth.
