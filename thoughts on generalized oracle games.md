@@ -7,15 +7,14 @@ One way we can think about attacking the participant set problem is as follows. 
 In terms of P + Epsilon, where P is the reward and Q is the loss, the bribe is actually P + Q + E. We assume ground truth is 0.
 
 (Your report, others' reports) = Your payoff
-Payoffs, happy path:
 
+Payoffs, happy path:
 - (1, any 0) = -Q
 - (1, all 1) = +P
 - (0, any 1) = -Q
 - (0, all 0) = +P
 
 P+Q+E bribery:
-
 - (1, any 0) = +(P+E)
 - (1, all 1) = +P
 - (0, any 1) = -Q
