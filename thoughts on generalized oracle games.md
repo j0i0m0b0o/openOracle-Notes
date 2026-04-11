@@ -36,7 +36,7 @@ One attack vector is spamming reports to discourage participation, since the rew
 
 It is also possible the continuation value dynamic interferes with the P + Q + E attack economics in the above simplified perspective, which would be a good thing (may make bribery more difficult). The briber still has to pay the 1 reporter if anyone reported 0, which they may do to capture continuation value. Also, bribery may increase reporter participation, which directly increases continuation value, since the next round is funded from the reporters' stakes.
 
-It seems like continuation value is higher under manipulation than with honest reporting, which may allow us to avoid degenerate escalation when we don't want it. That would be a nice result.
+It seems like continuation value is higher under manipulation than with honest reporting, which may allow us to avoid degenerate escalation when we don't want it. That would be a nice result. Another way of saying this: manipulation (bribery or spam) may endogenously create more continuation value than honest resolution, and that extra continuation value may be capturable by participants in a way that raises the effective cost of bribery.
 
 It may not be possible to have receipt-freeness onchain. There are also challenges with preventing selective non-reveal from becoming a strategic weapon. Maybe there is some cryptographic technique allowing full participant set reveal after some period of time, like with VDFs.
 
