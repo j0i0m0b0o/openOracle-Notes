@@ -9,17 +9,17 @@ In terms of P + Epsilon, where P is the reward and Q is the loss, the bribe is a
 (Your report, others' reports) = Your payoff
 Payoffs, happy path:
 
-(1, any 0) = -Q
-(1, all 1) = +P
-(0, any 1) = -Q
-(0, all 0) = +P
+- (1, any 0) = -Q
+- (1, all 1) = +P
+- (0, any 1) = -Q
+- (0, all 0) = +P
 
 P+Q+E bribery:
 
-(1, any 0) = +(P+E)
-(1, all 1) = +P
-(0, any 1) = -Q
-(0, all 0) = +P
+- (1, any 0) = +(P+E)
+- (1, all 1) = +P
+- (0, any 1) = -Q
+- (0, all 0) = +P
 
 So we still have a P + epsilon vulnerability. But at least we don't have the same kind of Sybil / participation set problem. It's a permissionless game.
 
