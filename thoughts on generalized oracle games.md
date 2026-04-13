@@ -63,3 +63,5 @@ Required crypto scheme:
 
   The scheme is not available from standard primitives. In principle, this does not appear impossible, but likely requires very exotic cryptography.
 
+  Deniability is not there to make bribery impossible. The point is to preserve the separate room condition of the prisoner game, so the Schelling point cannot form around what others are currently reporting.
+
