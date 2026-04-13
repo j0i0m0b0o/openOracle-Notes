@@ -12,7 +12,7 @@ Which number do you pick?"
 
 100000 is the obvious answer. We can try to create this game on the blockchain without voting. A naive approach: A reporter seals an answer, anyone can match them with a sealed answer of their own, if they agree after reveal, the answer stands, they split some reward, and all is good. If they disagree, they are both slashed. There is a trivial exploit with the reporter and matcher being the same entity and reporting nonsense. So we need open participation.
 
-Instead of the naive prisoner game, imagine the following: You have a reporter reward. Anyone can report a sealed value by committing a fixed amount of liquidity. If after reveal everyone agrees, they split the reward. If anyone disagrees, all the reporters lose their money and some portion funds a larger next round. Continuation value can become nasty here so need to be mindful in an implementation.
+Instead of the naive prisoner game, imagine the following: You have a reporter reward. Anyone can report a sealed value by committing a fixed amount of liquidity. If after reveal everyone agrees, they split the reward. If anyone disagrees, all the reporters lose their money and some portion funds a larger next round.
 
 In terms of P + Epsilon, where P is the reward and Q is the loss, the bribe is actually P + Q + E. We assume ground truth is 0.
 
