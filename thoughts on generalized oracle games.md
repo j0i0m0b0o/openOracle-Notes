@@ -52,7 +52,7 @@ Required crypto scheme:
 
   1. A reporter chooses a value x.
   2. During the live window, nobody else learns x.
-  3. During the live window, the reporter also cannot produce a convincing receipt proving x to anyone.
+  3. During the live window, any receipt is deniable: a reporter who submitted x can produce an equally convincing receipt for any alternative value y.
   4. After a VDF delay seeded by future block entropy, anyone can produce a publicly verifiable proof of exactly one of:
      UNANIMOUS or DISAGREEMENT.
   5. Intermediate-round values remain hidden.
@@ -61,7 +61,7 @@ Required crypto scheme:
   8. No trusted dealer.
   9. No hardware assumption.
 
-  The scheme is not available from standard primitives. In principle, this does not appear impossible, but likely requires very exotic cryptography.
+  The full scheme is not available from standard primitives. In principle, this does not appear impossible, but likely requires very exotic cryptography.
 
-  Deniability is not there to make bribery impossible. The point is to preserve the separate room condition of the prisoner game, so the Schelling point cannot form around what others are currently reporting.
+  Deniability is not there to make bribery impossible. The point is to preserve the separate room condition of the prisoner game, so the Schelling point cannot form around credible evidence of what others are currently reporting.
 
