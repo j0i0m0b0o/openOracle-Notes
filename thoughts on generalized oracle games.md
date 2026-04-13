@@ -45,3 +45,21 @@ Overall, the game is extremely strange, very aggressive, and might not work. On 
 This means there can be nasty continuation structure yet the game still finalizes on ground truth. In principle, continuation value from the reward growing each round can attract an extreme amount of capital by the time unanimity is reached, which may incentivize an ecosystem fork.
 
 In the event we get the game working, its intended use is per-instance, where the requester parameterizes the game as they would like. If we can find a parameterization whose equilibrium is escalate under attack & don't escalate under honesty, then we have found a scale-invariant solution to the generalized oracle problem. We don't need a perfect general oracle, just one that isn't structurally broken at scale like nearly all the other designs. Speculatively, the solution was never going to be some nice object anyways. Deranged solutions for deranged problems.
+
+----------------------------------------
+
+Required crypto scheme:
+
+  1. A reporter chooses a value x.
+  2. During the live window, nobody else learns x.
+  3. During the live window, the reporter also cannot produce a convincing receipt proving x to anyone.
+  4. After a VDF delay seeded by future block entropy, anyone can produce a publicly verifiable proof of exactly one of:
+     UNANIMOUS or DISAGREEMENT.
+  5. Intermediate-round values remain hidden.
+  6. On terminal unanimity, the unanimous value is revealed.
+  7. No committee.
+  8. No trusted dealer.
+  9. No hardware assumption.
+
+  The scheme is not available from standard primitives. In principle, this does not appear impossible, but likely requires very exotic cryptography.
+
