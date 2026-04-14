@@ -52,7 +52,7 @@ Required crypto scheme:
 
   1. A reporter chooses a value x.
   2. During the live window, nobody else learns x.
-  3. During the live window, any receipt is deniable: a reporter who submitted x can produce an equally convincing receipt for any alternative value y.
+  3. Any receipt is deniable: a reporter who submitted x can produce an equally convincing receipt for any alternative value y.
   4. After a VDF delay seeded by future block entropy, anyone can produce a publicly verifiable proof of exactly one of:
      UNANIMOUS or DISAGREEMENT.
   5. Intermediate-round values remain hidden.
