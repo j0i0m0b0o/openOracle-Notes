@@ -62,6 +62,8 @@ The game is terrible in the attrition sense. It isn't worth it to start playing,
 ## In conclusion
 Overall, the game is extremely strange, very aggressive, and might not work. On the bright side, it falls straight out of trying to implement the prisoner game on-chain. It's certainly possible the schelling point has nothing to do with ground truth.
 
+The game should not be thought of as a battle between honest and dishonest. There are really three strategic elements: continuation farming, finalization farming, and biasing the oracle output to influence some external dependent payout. The game needs to end eventually to capture the value. Truth may just incidentally be the cheapest terminal liquidation convention, or in simpler words the easiest way to end the game.
+
 In the event we get it working, its intended use is per-instance, where the requester parameterizes the game as they would like. We don't need a perfect general oracle, just one that isn't structurally broken at scale like nearly all the other designs. Speculatively, the solution was never going to be some nice object anyways. Deranged solutions for deranged problems.
 
 ----------------------------------------
