@@ -77,7 +77,7 @@ Required crypto scheme:
   3. Any receipt is deniable: a reporter who submitted x can produce an equally convincing receipt for any alternative value y.
   4. After a VDF delay seeded by future block entropy, anyone can produce a publicly verifiable proof of exactly one of:
      UNANIMOUS or DISAGREEMENT.
-  5. Intermediate-round values remain hidden.
+  5. Intermediate-round values remain hidden and deniable, except for information logically implied by the aggregate result together with a participant's own report.
   6. On terminal unanimity, the unanimous value is revealed.
   7. No committee.
   8. No trusted dealer.
@@ -86,4 +86,6 @@ Required crypto scheme:
   The full scheme is not available from standard primitives. In principle, this does not appear impossible, but likely requires very exotic cryptography.
 
   Deniability is not there to make bribery impossible. The point is to preserve the separate room condition of the prisoner game, so the Schelling point cannot form around credible evidence of what others are currently reporting.
+
+  The clean primitive appears plausibly realizable from sufficiently strong iO style machinery: deniable report encodings for the input side, plus an obfuscated evaluator that uses the delayed VDF witness to reveal only the leakage function (unanimity versus disagreement), without exposing a general decryption capability that reveals individual reports. It may be quite some time before this is practical.
 
