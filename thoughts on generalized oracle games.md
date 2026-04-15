@@ -62,7 +62,7 @@ A weird possibility is that a participant may rationally add a report, or even t
 The game is terrible in the attrition sense. It isn't worth it to start playing, but then once you start playing, it isn't worth it to stop, and the amounts can be catastrophic. It is unfortunately structurally forced on the mechanism when you try to port the prisoner coordination game on-chain in a robust way. It is possible nobody wants to play.
 
 ## In conclusion
-Overall, the game is extremely strange, very aggressive, and might not work. On the bright side, it falls straight out of trying to implement the prisoner game on-chain. It's certainly possible the schelling point has nothing to do with ground truth.
+Overall, the game is extremely strange, very aggressive, and might not work. On the bright side, it falls straight out of trying to implement the prisoner game on-chain. It's certainly possible the schelling point has nothing to do with ground truth. Delay may be an issue for time-critical applications, however costly for the manipulator, but it does appear to strengthen resolution.
 
 The game should not be thought of as a battle between honest and dishonest. There are really three strategic elements: continuation farming, finalization farming, and biasing the oracle output to influence some external dependent payout. The game needs to end eventually to capture the value. Truth may just incidentally be the cheapest terminal liquidation convention, or in simpler words the easiest way to end the game.
 
