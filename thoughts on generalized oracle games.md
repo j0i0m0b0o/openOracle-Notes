@@ -17,7 +17,7 @@ Which number do you pick?"
 ## Moving the prisoner game on-chain
 Instead of the naive prisoner game, imagine the following: You have a reporter reward. Anyone can report a sealed value by committing a fixed amount of liquidity. If the sealed reports agree (unanimity), reporters split the reward and this answer stands as the oracle output. If anyone disagrees, all the liquidity adds to the reward for the next round, with the same fixed liquidity commitment to participate, and we play the game again with the same rules. Naturally, we avoid needing to decide who is in the participant set and deal with Sybils in the strong sense by making identity irrelevant.
 
-In order to preserve the prisoners' lack of knowledge of others' reports, we need a cryptographic scheme where, from start to unanimity, a participant cannot provide binding evidence of their true report, but after a delay the protocol can verify unanimity versus disagreement each round. Maybe this is not possible without introducing some trusted component. Unanimity versus disagreement is at least just an equality predicate.
+In order to preserve the prisoners' lack of knowledge of others' reports, we need a cryptographic scheme where a participant cannot provide binding evidence of their true report, but after a delay the protocol can verify unanimity versus disagreement each round. Maybe this is not possible without introducing some trusted component. Unanimity versus disagreement is at least just an equality predicate.
 
 ## Bribery
 In terms of P + Epsilon, where P is the reward and Q is the loss, the bribe is actually P + Q + E. We assume ground truth is 0. Assume P + Q + E is paid to all who report 1, but only when there is at least one 0 report.
